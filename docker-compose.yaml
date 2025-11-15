@@ -40,7 +40,9 @@ services:
       - "4317:4317"   # OTLP gRPC receiver
       - "55679:55679" # zpages extension
     depends_on:
-      - jaeger-all-in-one
+      - tempo
+      - loki
+      - prometheus
 
   prometheus:
     image: ${PROM_IMG}

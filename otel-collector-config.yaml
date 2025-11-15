@@ -6,14 +6,7 @@ receivers:
 
 exporters:
 
-
   debug:
-
-
-  otlp/jaeger:
-    endpoint: jaeger-all-in-one:4317
-    tls:
-      insecure: true
 
   otlp/tempo:
     endpoint: tempo:4317
@@ -43,8 +36,8 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [debug, otlp/jaeger, otlp/tempo]
+      exporters: [debug, otlp/tempo]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [debug, prometheus]
+      exporters: [debug]
